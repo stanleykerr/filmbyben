@@ -13,6 +13,14 @@ const info = [
   ["linkedin", "https://www.linkedin.com/in/benjamin-janes-41b71917b/"],
 ];
 
+const pages = [
+  ["Home", ""],
+  ["Showcase", "showcase"],
+  ["Services", "services"],
+  ["About", "about"],
+  ["Contact", "contact"],
+];
+
 export default function Navbar() {
   const [isOpen, setOpen] = useState(true);
   return (
@@ -42,35 +50,45 @@ export default function Navbar() {
         className={styles.navigationOverlay}
       >
         <div className={styles.navWrapper}>
-          <div className={styles.navInfo}>
-            <h4>Film by Ben</h4>
-            <div className={styles.navInfoText}>
-              Professional Cinematographer and Film Maker <br />
-              based in Las Vegas, Nevada
+          <div className={styles.navContent}>
+            <div className={styles.navInfo}>
+              <h4>Film by Ben</h4>
+              <div className={styles.navInfoText}>
+                Professional Cinematographer and Film Maker <br />
+                based in Las Vegas, Nevada
+              </div>
+              <a href="mailto:ben@filmbyben.com" className={styles.navInfoLink}>
+                ben@filmbyben.com
+              </a>
+              <a href="tel:+1(770)713-2223" className={styles.navInfoLink}>
+                +1 (770) 713-2223
+              </a>
+              <div className={styles.navFollowText}>Follow me</div>
+              <div className={styles.navSocial}>
+                {info.map(([icon, href], index) => (
+                  <a
+                    key={index}
+                    href={href}
+                    rel="noreferrer"
+                    target="_blank"
+                    className={[styles.socialButton, styles[icon]].join(" ")}
+                  >
+                    <FontAwesomeIcon icon={["fab", icon]} />
+                  </a>
+                ))}
+              </div>
             </div>
-            <a href="mailto:ben@filmbyben.com" className={styles.navInfoLink}>
-              ben@filmbyben.com
-            </a>
-            <a href="tel:+1(770)713-2223" className={styles.navInfoLink}>
-              +1 (770) 713-2223
-            </a>
-            <div className={styles.navFollowText}>Follow me</div>
-            <div className={styles.navSocial}>
-              {info.map(([icon, href], index) => (
-                <a
-                  key={index}
-                  href={href}
-                  rel="noreferrer"
-                  target="_blank"
-                  className={[styles.socialButton, styles[icon]].join(" ")}
-                >
-                  <FontAwesomeIcon icon={["fab", icon]} />
-                </a>
+            <div className={styles.navLinks}>
+              {pages.map(([title, href], index) => (
+                <div key={index} className={styles.navLinkWrapper}>
+                  <Link href={`/${href}`}>
+                    <a className={[styles.navLink].join(" ")}>{title}</a>
+                  </Link>
+                </div>
               ))}
             </div>
           </div>
         </div>
-        <div className={styles.navLinks}></div>
       </div>
     </div>
   );
