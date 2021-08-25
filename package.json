@@ -25,7 +25,8 @@
     "prettier-plugin-import-sort": "^0.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-spring": "^9.2.4"
+    "react-spring": "^9.2.4",
+    "sass": "^1.38.1"
   },
   "devDependencies": {
     "eslint": "7.32.0",
