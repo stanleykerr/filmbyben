@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@middleware/*": ["middleware/*"],
+      "@styles/*": ["styles/*"],
+      "@lib/*": ["lib/*"],
+      "@public/*": ["../public/*"]
+    }
+    /* "checkJs": true,
+    "jsx": "react-jsx" */
+  },
+  "exclude": ["node_modules", ".next"]
+}
