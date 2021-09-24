@@ -1,3 +1,5 @@
+import { animated, useSpring } from "react-spring";
+
 import ButtonMagnet from "@components/ButtonMagnet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -23,6 +25,16 @@ const pages = [
 
 export default function Navbar() {
   const [isOpen, setOpen] = useState(true);
+
+  const contentProps = /* useSpring( */ {
+    display: "flex",
+    //opacity: isOpen ? 1 : 0,
+    //marginTop: isOpen ? 0 : -500,
+    //display: isOpen ? "flex" : "none",
+    transform: isOpen ? "translateY(0px)" : "translateY(-100%)",
+    transition: "transform 1200ms cubic-bezier(0.77, 0, 0.175, 1)",
+  }; /* ) */
+
   return (
     <div className={styles.navbar}>
       <Link href="/">
@@ -40,15 +52,12 @@ export default function Navbar() {
         </a>
       </Link>
       <div className={styles.navigation}>
-        <ButtonMagnet href="/quote">Request a Quote</ButtonMagnet>
+        <ButtonMagnet href="/quote">Request a Consultation</ButtonMagnet>
         <div className={styles.menuIcon} onClick={() => setOpen(!isOpen)}>
           <FontAwesomeIcon icon={["fas", isOpen ? "times" : "bars"]} />
         </div>
       </div>
-      <div
-        style={{ display: isOpen ? "flex" : "none" }}
-        className={styles.navigationOverlay}
-      >
+      <div style={contentProps} className={styles.navigationOverlay}>
         <div className={styles.navWrapper}>
           <div className={styles.navContent}>
             <div className={styles.navInfo}>
