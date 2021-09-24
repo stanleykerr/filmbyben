@@ -6,7 +6,7 @@ import Layout from "@components/Layout";
 import SimpleCarousel from "@components/SimpleCarousel";
 import logoFull from "@public/img/logo-full.png";
 
-// import styles from "../styles/Home.module.css";
+// import styles from "@styles/Home.module.css";
 
 // <FontAwesomeIcon icon={["fab", "github"]} />
 
