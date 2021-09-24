@@ -7,9 +7,9 @@ export default function BackgroundVideo({ src, className, ...props }) {
 
   return (
     <div className={[className, styles.bgVideo].join(" ").trim()}>
-      <video {...props} autoPlay loop muted playsInline>
+      {/*<video {...props} autoPlay loop muted playsInline>
         {sources}
-      </video>
+  </video>*/}
     </div>
   );
 }
