@@ -1,0 +1,95 @@
+@import "_variables";
+
+div.header {
+  display: flex;
+  align-items: center;
+  max-width: $pageWidthWithMargin;
+  margin: auto;
+  padding: 0 $pageMargin;
+  height: $headerHeight;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+
+  .scope,
+  .links {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .scope {
+    flex: 1 1;
+    padding-right: $gap;
+  }
+
+  .links {
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+}
+
+nav.menu {
+  box-shadow: inset 0 -1px $accents2;
+
+  .menuWrapper {
+    margin-top: -10px;
+    height: 48px;
+    position: relative;
+    overflow: hidden;
+
+    .menuInner {
+      width: $pageWidthWithMargin;
+      max-width: 100%;
+      padding: 0 $pageMargin;
+      z-index: 1100;
+      height: 48px;
+      line-height: 48px;
+      margin: auto auto -1px;
+      display: flex;
+      align-items: flex-end;
+      line-height: normal;
+      font-size: 16px;
+      font-weight: 500;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      & > div > a {
+        position: relative;
+        display: inline-block;
+        padding: 16px 12px;
+        color: $accents5;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 400;
+        transition: color 0.2s ease;
+        outline: none;
+        cursor: pointer;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        &.active {
+          color: red !important;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 0;
+            left: 9px;
+            right: 9px;
+            bottom: 0;
+            border-bottom: 2px solid;
+          }
+        }
+      }
+    }
+  }
+
+  // overflow: hidden
+}
