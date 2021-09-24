@@ -1,10 +1,13 @@
 import BackgroundVideo from "@components/BackgroundVideo";
-import Carousel from "@components/Carousel";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Layout from "@components/Layout";
-import SimpleCarousel from "@components/SimpleCarousel";
 import logoFull from "@public/img/logo-full.png";
+
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// import Carousel from "@components/Carousel";
+
+// import SimpleCarousel from "@components/SimpleCarousel";
 
 // import styles from "@styles/Home.module.css";
 

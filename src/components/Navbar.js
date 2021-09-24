@@ -1,5 +1,3 @@
-import { animated, useSpring } from "react-spring";
-
 import ButtonMagnet from "@components/ButtonMagnet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -26,14 +24,11 @@ const pages = [
 export default function Navbar() {
   const [isOpen, setOpen] = useState(true);
 
-  const contentProps = /* useSpring( */ {
+  const contentProps = {
     display: "flex",
-    //opacity: isOpen ? 1 : 0,
-    //marginTop: isOpen ? 0 : -500,
-    //display: isOpen ? "flex" : "none",
     transform: isOpen ? "translateY(0px)" : "translateY(-100%)",
     transition: "transform 1200ms cubic-bezier(0.77, 0, 0.175, 1)",
-  }; /* ) */
+  };
 
   return (
     <div className={styles.navbar}>
