@@ -1,5 +1,6 @@
 /* COLORS */
 
+$background: #fff;
 $accents1: #fafafa;
 $accents2: #eaeaea;
 $accents3: #999;
@@ -8,9 +9,43 @@ $accents5: #666;
 $accents6: #444;
 $accents7: #333;
 $accents8: #111;
+$foreground: #000;
 
-$fg: #000;
-$bg: #fff;
+$bg: $background;
+$fg: $foreground;
+
+$secondary: $accents5;
+
+$errorLighter: #f7d4d6;
+$errorLight: #ff1a1a;
+$error: #e00;
+$errorDark: #c50000;
+
+$successLighter: #d3e5ff;
+$successLight: #3291ff;
+$success: #0070f3;
+$successDark: #0761d1;
+
+$warningLighter: #ffefcf;
+$warningLight: #f7b955;
+$warning: #f5a623;
+$warningDark: #ab570a;
+
+$violetLighter: #e3d7fc;
+$violetLight: #8a63d2;
+$violet: #7928ca;
+$violetDark: #4c2889;
+
+$cyanLighter: #aaffec;
+$cyanLight: #79ffe1;
+$cyan: #50e3c2;
+$cyanDark: #29bc9b;
+
+// highlight colors
+$highlightPurple: #f81ce5;
+$highlightMagenta: #eb367f;
+$highlightPink: #ff0080;
+$highlightYellow: #fff500;
 
 /* SIZES */
 
@@ -22,3 +57,21 @@ $gap: $spaceGap;
 $pageWidthWithMargin: 1048px;
 $pageMargin: $spaceGap;
 $pageWidth: 1000px;
+
+$space: 4px;
+$space-2x: 8px;
+$space-4x: 16px;
+$space-8x: 32px;
+$space-16x: 64px;
+$space-24x: 96px;
+$space-32x: 128px;
+$space-48x: 192px;
+$space-64x: 256px;
+$space-small: 32px;
+$space-medium: 40px;
+$space-large: 48px;
+$space-gap: 24px;
+$space-gap-half: 12px;
+
+/* FONT SIZES? */
+$formFont: 0.875rem;

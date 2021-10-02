@@ -1,14 +1,14 @@
-import "@styles/CliLayout.module.scss";
+import "@styles/CmsLayout.module.scss";
 
-import CliNavbar from "@components/cli/CliNavbar";
+import CmsNavbar from "@components/cms/CmsNavbar";
 import Container from "@components/Container";
-import Spacer from "@components/Spacer";
-import styles from "@styles/CliLayout.module.scss";
+import { Spacer } from "@components/design";
+import styles from "@styles/CmsLayout.module.scss";
 
-export default function CliLayout({ children }) {
+export default function CmsLayout({ children }) {
   return (
     <>
-      <CliNavbar />
+      <CmsNavbar />
       <div className={styles.page}>
         <main className={styles.main}>
           <Container wrapper full>
