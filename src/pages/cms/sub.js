@@ -1,4 +1,4 @@
-import CliLayout from "@components/cli/CliLayout";
+import CmsLayout from "@components/cms/CmsLayout";
 
 export default function Sub() {
   return <>test</>;
@@ -6,4 +6,4 @@ export default function Sub() {
 
 // TODO: fix
 // eslint-disable-next-line react/display-name
-Sub.getLayout = (page) => <CliLayout>{page}</CliLayout>;
+Sub.getLayout = (page) => <CmsLayout>{page}</CmsLayout>;
