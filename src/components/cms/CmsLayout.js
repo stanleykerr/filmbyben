@@ -2,7 +2,7 @@ import "@styles/CmsLayout.module.scss";
 
 import CmsNavbar from "@components/cms/CmsNavbar";
 import Container from "@components/Container";
-import { Spacer } from "@components/design";
+import { Spacer } from "@geist-ui/react";
 import styles from "@styles/CmsLayout.module.scss";
 
 export default function CmsLayout({ children }) {

@@ -1,11 +1,9 @@
-import { Description, Tabs } from "@components/design";
-
 import CmsLayout from "@components/cms/CmsLayout";
 import CmsWork from "@components/cms/CmsWork";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Spacer } from "@components/design";
+import { Description, Spacer, Tabs } from "@geist-ui/react";
 import { Work } from "@lib/sequelize";
 import styled from "styled-components";
 import styles from "@styles/CMS.module.scss";

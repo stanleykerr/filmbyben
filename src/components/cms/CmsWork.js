@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import { Work, convert } from "@lib/db/models";
 
-import { Spacer } from "@components/design";
+import { Spacer } from "@geist-ui/react";
 
 export default function CmsWork({ work }) {
   // we use a flat map to add a spacer at the end of each form field
