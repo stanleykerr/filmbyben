@@ -1,12 +1,17 @@
+import { Description, Grid, Spacer, Tabs } from "@geist-ui/react";
+
 import CmsLayout from "@components/cms/CmsLayout";
 import CmsWork from "@components/cms/CmsWork";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Description, Spacer, Tabs } from "@geist-ui/react";
 import { Work } from "@lib/sequelize";
+import { createDeflate } from "zlib";
+import { serialize } from "superjson";
 import styled from "styled-components";
 import styles from "@styles/CMS.module.scss";
+
+// import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 const Title = styled.h1`
   font-size: 50px;
@@ -24,57 +29,37 @@ export default function CMS({ works }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Title>test</Title>
-
       <Spacer />
-
-      <Tabs initialValue="1">
-        <Tabs.Item label="Home" value="1">
-          <Text>Hello!</Text>
-        </Tabs.Item>
-        <Tabs.Item label="About" value="2">
-          <Text>Cool stuff.</Text>
-        </Tabs.Item>
-        <Tabs.Item label="About Us" value="3">
-          <Text>Good people.</Text>
-        </Tabs.Item>
-        <Tabs.Item label="Features" value="4">
-          <Text>Amazing.</Text>
-        </Tabs.Item>
-        <Tabs.Item label="Pricing" value="5">
-          <Text>Very low.</Text>
-        </Tabs.Item>
-        <Tabs.Item label="Docs" value="6">
-          <Text>Clear.</Text>
-        </Tabs.Item>
-        <Tabs.Item label="Profile" value="7">
-          <Text>Extraordinary person.</Text>
-        </Tabs.Item>
-        <Tabs.Item label="Settings" value="8">
-          <Text>Easy to tweak.</Text>
-        </Tabs.Item>
-        <Tabs.Item label="Dashboard" value="9">
-          <Text>Charts.</Text>
-        </Tabs.Item>
-        <Tabs.Item label="Policies" value="10">
-          <Text>Privacy focused.</Text>
-        </Tabs.Item>
-      </Tabs>
-
-      <Spacer />
-
       <Description title="Section Title" content="Data about this section." />
-
       <Spacer />
-
-      {works.map((work) => (
-        <CmsWork key={work.id} work={work} />
-      ))}
+      <Grid.Container gap={2} justify="center">
+        {/* works.flatMap((work, i) => [
+          <CmsWork key={work.id} work={work} />,
+          <Spacer key={i} />,
+        ]) */}
+        {works?.length > 0 ? (
+          <>
+            {works.map((work) => (
+              <Grid key={work.id} xs={24} md={12} lg={8}>
+                <CmsWork key={work.id} work={work} />
+              </Grid>
+            ))}
+          </>
+        ) : (
+          <>no works found</>
+        )}
+      </Grid.Container>
     </div>
   );
 }
 
 export async function getServerSideProps(_context) {
-  const works = await Work.findAll({ raw: true });
+  let works = await Work.findAll();
+
+  works = works.map((work) => serialize(work.get({ plain: true })));
+
+  console.log(works);
+
   // console.log(works, JSON.stringify(works));
   return {
     props: { works }, // will be passed to the page component as props

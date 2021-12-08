@@ -1,6 +1,7 @@
 import { DataTypes, Sequelize } from "sequelize";
 
 import { nanoid } from "nanoid";
+import { serialize } from "superjson";
 
 let authenticated = false;
 
@@ -33,10 +34,35 @@ export const Work = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    link: DataTypes.STRING,
     thumbnail: {
       type: DataTypes.STRING,
+      // TODO: remove this virtual getter in production, only used for development purposes
+      get() {
+        return this.getDataValue("link") ?? this.getDataValue("thumbnail");
+      },
     },
-    link: DataTypes.STRING,
+    visible: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return this.name.length % 2 === 0;
+      },
+      set(_value) {
+        throw new Error("Do not try to set the `visible` value!");
+      },
+    },
+    display: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return {
+          name: this.name,
+          visible: this.visible,
+        };
+      },
+      set(_value) {
+        throw new Error("Do not try to set the `display` value!");
+      },
+    },
   },
   {}
 );
