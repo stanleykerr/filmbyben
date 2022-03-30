@@ -1,6 +1,7 @@
-import { Dot, Input, Link, Text, Toggle } from "@geist-ui/react";
+import { Input, Link, Switch, Text } from "@geist-ui/core";
 
 import { DateTime } from "luxon";
+import { Dot } from "@geist-ui/core";
 import Image from "next/image";
 import styles from "@styles/CmsForm.module.scss";
 import { useField } from "formik";
@@ -63,7 +64,6 @@ const TextField = ({ model, options, ...props }) => {
   return (
     <>
       <label>
-        <span className={styles.label}>{labelText}</span>
         <div className={styles.inputContainer}>
           <Input
             {...field}
@@ -74,6 +74,7 @@ const TextField = ({ model, options, ...props }) => {
             autoComplete="off"
             autoCorrect="off"
             width="100%"
+            label={labelText}
           />
           {/* <input
             {...field}
@@ -109,7 +110,7 @@ const ToggleField = ({ model, options, ...props }) => {
       <label>
         <span className={styles.label}>{labelText}</span>
         <div className={styles.inputContainer}>
-          <Toggle {...field} {...props} initialChecked={field.value} />
+          <Switch {...field} {...props} initialChecked={field.value} />
           {/* <input
             {...field}
             {...props}
@@ -140,7 +141,7 @@ const YoutubeThumbnailField = ({ model, options, ...props }) => {
 
   // return "https://img.youtube.com/vi/"+this.id+"/default.jpg";
 
-  const generateThumbnail = (url, quality = "hq") => {
+  const generateThumbnail = (url, quality = "sd") => {
     // console.log(url);
     var regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
@@ -221,7 +222,7 @@ const LinkDisplayField = ({ model, options, ...props }) => {
       <label>
         <span className={styles.label}>{labelText}</span>
         <div className={styles.inputContainer}>
-          <Link href={field.value} icon color>
+          <Link href={field.value} block icon color="primary">
             {field.value}
           </Link>
         </div>
@@ -257,7 +258,7 @@ export const Work = {
       options,
       ...props
     }) {
-      console.log(model, options, "other:", props);
+      // console.log(model, options, "other:", props);
       let [fieldName] = model;
       const [field, meta] = useField({ name: fieldName, ...props });
 
@@ -266,18 +267,19 @@ export const Work = {
       } = field;
 
       return (
-        <Text
-          h4
-          small
-          style={{
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
+        <>
           <Dot type={visible ? "success" : "default"} />
-          {name}
-        </Text>
+          <Text
+            h5
+            style={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {name}
+          </Text>
+        </>
       );
     },
   },

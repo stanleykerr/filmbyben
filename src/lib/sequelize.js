@@ -1,7 +1,6 @@
 import { DataTypes, Sequelize } from "sequelize";
 
 import { nanoid } from "nanoid";
-import { serialize } from "superjson";
 
 let authenticated = false;
 

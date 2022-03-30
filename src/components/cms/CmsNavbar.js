@@ -56,7 +56,7 @@ export default function CmsNavbar() {
   // [title, href]
 
   return (
-    <>
+    <div style={{ background: "white" }}>
       <div className={styles.header}>
         <div className={styles.scope}>test</div>
         <div className={styles.links}>test2</div>
@@ -86,6 +86,6 @@ export default function CmsNavbar() {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 }

@@ -2,15 +2,30 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@middleware/*": ["middleware/*"],
-      "@styles/*": ["styles/*"],
-      "@lib/*": ["lib/*"],
-      "@public/*": ["../public/*"]
+      "@components/*": [
+        "components/*"
+      ],
+      "@middleware/*": [
+        "middleware/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@public/*": [
+        "../public/*"
+      ]
     },
     /* "checkJs": true,
-    "jsx": "react-jsx" */ "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx" */
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -21,8 +36,19 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
-  "exclude": ["node_modules", ".next", "deprecated"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+  "exclude": [
+    "node_modules",
+    ".next",
+    "deprecated"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ]
 }

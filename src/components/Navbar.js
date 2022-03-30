@@ -22,11 +22,11 @@ const pages = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
 
   const contentProps = {
     display: "flex",
-    transform: isOpen ? "translateY(0px)" : "translateY(-100%)",
+    transform: `translateY(${isOpen ? 0 : -100}%)`,
     transition: "transform 1200ms cubic-bezier(0.77, 0, 0.175, 1)",
   };
 
@@ -42,7 +42,9 @@ export default function Navbar() {
           />
           <div className={styles.logoinfo}>
             <div className={styles.title}>Film by Ben</div>
-            <div className={styles.subtitle}>Cinematographer & Film Maker</div>
+            <div className={styles.subtitle}>
+              Cinematographer &amp; Film Maker
+            </div>
           </div>
         </a>
       </Link>
