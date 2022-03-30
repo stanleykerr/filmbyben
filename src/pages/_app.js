@@ -1,6 +1,7 @@
 import "@styles/globals.scss";
 import "@lib/font-awesome";
 
+import { CssBaseline, GeistProvider, Themes } from "@geist-ui/core";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 // import CursorContextProvider from "@components/CursorContext/CursorContextProvider";
@@ -97,16 +98,35 @@ const theme = {
   },
 };
 
+const themeType = "myTheme";
+const customUnitTheme = Themes.createFromLight({
+  type: themeType,
+  layout: {
+    unit: "16px",
+  },
+});
+
+// TODO: implement theme type..?
 function MyApp({ Component, pageProps }) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page);
 
+  // TODO: implement this? if we want to
+  /* const [themeType, setThemeType] = useState("light");
+
+  const switchThemes = () => {
+    setThemeType((last) => (last === "dark" ? "light" : "dark"));
+  }; */
+
   return (
     <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
+      <GeistProvider themes={[customUnitTheme]} themeType={themeType}>
+        <CssBaseline />
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          {getLayout(<Component {...pageProps} />)}
+        </ThemeProvider>
+      </GeistProvider>
     </>
   );
 }
