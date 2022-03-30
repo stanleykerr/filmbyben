@@ -1,31 +1,43 @@
-import "@styles/CmsLayout.module.scss";
+// import "@styles/CmsLayout.module.scss";
+
+import { Page, Spacer, Tabs } from "@geist-ui/core";
 
 import CmsNavbar from "@components/cms/CmsNavbar";
 import Container from "@components/Container";
-import { Spacer } from "@geist-ui/react";
-import styles from "@styles/CmsLayout.module.scss";
+
+// import styles from "@styles/CmsLayout.module.scss";
 
 export default function CmsLayout({ children }) {
   return (
     <>
       <CmsNavbar />
-      <div className={styles.page}>
-        <main className={styles.main}>
-          <Container wrapper full>
-            {/* TODO: don't hardcode inner container, let children choose */}
-            <Container wrapper>
-              <Spacer />
-              {children}
-            </Container>
-          </Container>
-        </main>
-      </div>
-      <style global jsx>{`
+      <Page dotBackdrop padding={0}>
+        {/* <Page.Header></Page.Header> */}
+        <Page.Content>{children}</Page.Content>
+
+        {/*  */}
+      </Page>
+
+      {/* <style global jsx>{`
         html,
         body {
           background: white;
         }
-      `}</style>
+      `}</style> */}
     </>
   );
+}
+
+/* TODO: don't hardcode inner container, let children choose */
+{
+  /* <div className={styles.page}>
+  <main className={styles.main}>
+    <Container wrapper full>
+      <Container wrapper>
+        <Spacer />
+        {children}
+      </Container>
+    </Container>
+  </main>
+</div>; */
 }
