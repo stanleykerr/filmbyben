@@ -1,10 +1,100 @@
 {
-  "extends": ["next", "next/core-web-vitals", "prettier"],
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2022
+  },
+  "extends": ["next", "next/core-web-vitals"],
+  "plugins": ["@typescript-eslint", "unused-imports", "import"],
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "extensions": [".ts", ".tsx"]
+      },
       "node": {
-        "paths": ["."]
+        "paths": ["."],
+        "extensions": [".js", ".jsx"]
       }
     }
+  },
+  "rules": {
+    "import/no-unresolved": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin"
+          },
+          {
+            "pattern": "next/**",
+            "group": "builtin",
+            "patternOptions": {
+              "matchBase": false,
+              "partial": true
+            }
+          },
+          {
+            "pattern": "@styles/*",
+            "group": "type",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["type"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "quotes": [2, "double"],
+    "semi": "off",
+    "@typescript-eslint/semi": ["error"], // ["off"]
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "semi", // 'none' or 'semi' or 'comma'
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi", // 'semi' or 'comma'
+          "requireLast": false
+        }
+      }
+    ],
+    // "no-unused-vars": "off", // or "no-unused-vars": "off",
+    // "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
   }
 }

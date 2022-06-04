@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -8,7 +10,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  swcMinify: true,
 };
 
 module.exports = nextConfig;
