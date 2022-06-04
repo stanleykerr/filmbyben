@@ -54,7 +54,12 @@
             }
           },
           {
-            "pattern": "@styles/*",
+            "pattern": "@public/**",
+            "group": "type",
+            "position": "after"
+          },
+          {
+            "pattern": "@styles/**",
             "group": "type",
             "position": "after"
           }
