@@ -1,4 +1,3 @@
-import { animated, useSpring } from "react-spring";
 import {
   createContext,
   useCallback,
@@ -7,7 +6,8 @@ import {
   useState,
 } from "react";
 
-import styles from "@styles/Carousel.module.scss";
+import { animated, useSpring } from "react-spring";
+
 
 // import PropTypes from "prop-types";
 

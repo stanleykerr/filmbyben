@@ -1,25 +1,23 @@
+import { useState } from "react";
+
 import {
-  Button,
   Card,
-  Divider,
   Grid,
   Loading,
   Spacer,
   Text,
-  User,
   useScale,
   useTheme,
   withScale,
 } from "@geist-ui/core";
-import { DateTime, Duration } from "luxon";
 import { File, Youtube } from "@geist-ui/icons";
-import { Form, Formik } from "formik";
-import { Work, convert } from "@lib/db/models";
-
+import { DateTime } from "luxon";
 import styled from "styled-components";
-import { useState } from "react";
 
-// import styles from "@styles/CMS.module.scss";
+import { Work, convert } from "@/lib/db/models";
+
+
+// import styles from "@/styles/CMS.module.scss";
 
 // import { Card } from "@nextui-org/react";
 
@@ -269,7 +267,7 @@ const CmsWorkComponent = ({ work }) => {
             bottom: 0,
             zIndex: 1,
             backdropFilter: "saturate(180%) blur(10px)",
-            background: `#ffffff66`,
+            background: "#ffffff66",
           }}
           justify="flex-start"
         >

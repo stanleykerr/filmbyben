@@ -1,7 +1,8 @@
 {
   "files.exclude": {
     "node_modules/": true,
-    ".next/": true
+    ".next/": true,
+    "deprecated/**": true
   },
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -12,5 +13,141 @@
     "editor.formatOnSave": true
   },
   "jest.autoRun": "off",
-  "jest.jestCommandLine": "yarn test"
+  "jest.jestCommandLine": "yarn test",
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      // "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      // "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+  "todo-tree.highlights.highlightDelay": 100,
+  "todo-tree.filtering.excludeGlobs": [
+    "**/vendor/**",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/bower_components/**",
+    "**/build/**",
+    "**/.vscode/**",
+    "**/.github/**",
+    "**/_output/**",
+    "**/*.min.*",
+    "**/*.map"
+  ],
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "NOTE",
+    "HACK",
+    "REFACTOR",
+    "OPTIMIZE",
+    "IMPROVE",
+    "CHANGE",
+    "REVIEW",
+    "TEMP"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|/\\*|^\\s*\\*)\\s*(($TAGS):?)",
+  "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
+  "todo-tree.highlights.defaultHighlight": {
+    "type": "capture-groups:2,2",
+    "icon": "alert",
+    "iconColour": "#2196f3",
+    "foreground": "#2196f3",
+    "background": "#ffeb3b",
+    "rulerLane": "full",
+    "rulerColour": "#2196f3", // #ffab00
+    "rulerOpacity": 80,
+    "opacity": 100,
+    "gutterIcon": true,
+    "borderRadius": "0px"
+  },
+  "todo-tree.highlights.customHighlight": {
+    // https://primer.style/octicons/
+    "TODO": {
+      "icon": "flame",
+      "iconColour": "#ffbd2a",
+      "foreground": "#fff",
+      "background": "#ffbd2a",
+      "rulerColour": "#ffbd2a"
+    },
+    "FIXME": {
+      "icon": "beaker",
+      "iconColour": "#f06292",
+      "foreground": "#fff",
+      "background": "#f06292",
+      "rulerColour": "#f06292"
+    },
+    "NOTE": {},
+    "HACK": {
+      "icon": "eye-closed",
+      "iconColour": "#ffab",
+      "foreground": "#000",
+      "background": "#ffab"
+    },
+    "REFACTOR": {
+      "icon": "light-bulb",
+      "iconColour": "#ffab",
+      "foreground": "#000",
+      "background": "#ffab"
+    },
+    "OPTIMIZE": {
+      "icon": "stopwatch"
+    },
+    "IMPROVE": {
+      "icon": "light-bulb",
+      "iconColour": "#ffa",
+      "foreground": "#000",
+      "background": "#ffa"
+    },
+    "CHANGE": {
+      "icon": "pencil"
+    },
+    "REVIEW": {
+      "icon": "north-star"
+    },
+    "TEMP": {
+      "icon": "squirrel"
+    }
+  },
+  "todo-tree.tree.scanMode": "open files"
 }

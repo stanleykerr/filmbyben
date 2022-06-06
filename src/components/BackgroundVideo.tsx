@@ -1,11 +1,9 @@
-import { useMemo } from "react";
-
 import styled from "styled-components";
 
 /**
  * The props type for [[`BackgroundVideo`]].
  */
-interface Props {
+export interface BackgroundVideoProps {
   /** Source(s) of video */
   src: string | string[];
 
@@ -13,9 +11,7 @@ interface Props {
   hero?: boolean;
 }
 
-type StyleProps = Omit<Props, "src">;
-
-const BackgroundVideoComp = styled.div<StyleProps>`
+const BackgroundVideoComp = styled.div<Pick<BackgroundVideoProps, "hero">>`
   position: absolute;
   display: inline-block;
   overflow: visible;
@@ -58,13 +54,9 @@ const BackgroundVideoComp = styled.div<StyleProps>`
  *
  * @category Component
  */
-const BackgroundVideo = ({ src, ...props }: Props) => {
-  const sources = useMemo(
-    () =>
-      (typeof src === "string" ? [src] : src).map((srcURL, index) => (
-        <source key={`bgVideo-${index}`} src={srcURL} />
-      )),
-    [src]
+const BackgroundVideo = ({ src, ...props }: BackgroundVideoProps) => {
+  const sources = (typeof src === "string" ? [src] : src).map(
+    (srcURL, index) => <source key={`bgVideo-${index}`} src={srcURL} />
   );
 
   return (

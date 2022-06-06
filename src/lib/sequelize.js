@@ -1,6 +1,5 @@
-import { DataTypes, Sequelize } from "sequelize";
-
 import { nanoid } from "nanoid";
+import { DataTypes, Sequelize } from "sequelize";
 
 let authenticated = false;
 

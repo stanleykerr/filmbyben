@@ -1,4 +1,4 @@
-import CmsLayout from "@components/cms/CmsLayout";
+import CmsLayout from "@/components/cms/CmsLayout";
 
 export default function Sub() {
   return <>test</>;
