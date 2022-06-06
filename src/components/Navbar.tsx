@@ -1,14 +1,13 @@
 import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { animated, useSpring, easings } from "react-spring";
 import styled from "styled-components";
 
 import Image from "next/image";
 
 import ButtonMagnet from "./ButtonMagnet";
 import SocialLinks from "./SocialLinks";
-
-// TODO: migrate to styled-components
 
 const Wrapper = styled.div`
   position: fixed;
@@ -110,11 +109,10 @@ const ToggleButton = styled.div`
   }
 `;
 
-const NavWrapper = styled.nav<{ open?: boolean }>`
+const NavWrapper = styled.nav`
   position: fixed;
   inset: 0%;
-  display: ${({ open }) =>
-    open ? "flex" : "none"}; // display: none; when collapsed
+  display: flex; // display: none; when collapsed
   overflow: auto;
   height: 100vh;
   max-height: 100vh;
@@ -124,9 +122,6 @@ const NavWrapper = styled.nav<{ open?: boolean }>`
   background-color: rgb(21, 21, 21);
   text-align: center;
   min-width: 200px;
-
-  transform: ${({ open }) => `translateY(${open ? 0 : -100}%)`};
-  transition: "transform 1200ms cubic-bezier(0.77, 0, 0.175, 1)";
 `;
 
 const NavContent = styled.div`
@@ -202,38 +197,58 @@ const NavSocial = styled.div`
   align-items: center;
 `;
 
-// TODO: rewrite this based on webflow + styled-components, this doesn't render correctly and is a mess
+const NavigationOverlay = styled(animated.div)`
+  z-index: 10;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+`;
+
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
 
+  /*
+  transform: ${({ open }) => `translateY(${open ? 0 : -100}%)`};
+  transition: transform 1200ms cubic-bezier(0.77, 0, 0.175, 1);
+  */
+
+  const { y } = useSpring({
+    y: isOpen ? "0%" : "-100%",
+    config: {
+      duration: 1200,
+      easing: easings.easeInOutQuart,
+    },
+  });
+
   return (
-    <Wrapper>
-      <BrandWrapper>
-        <Image
-          src="/img/logo.png"
-          alt="Picture of the author" // TODO: properly set alt text
-          width={32}
-          height={44}
-        />
-        <div>
-          <span>Film by Ben</span>
-          <span>Cinematographer &amp; Film maker</span>
-        </div>
-      </BrandWrapper>
-      <Navigation>
-        <NavBarInfo>
-          {/* <Link href="/quote" passHref>
-            <Button>Request a Consultation</Button>
-          </Link> */}
-          <ButtonMagnet href="/quote">Request a Consultation</ButtonMagnet>
-        </NavBarInfo>
-        <ToggleButton onClick={() => setOpen(!isOpen)}>
-          <FontAwesomeIcon
-            icon={["fas", isOpen ? "times" : "bars"]}
-            size={"lg"}
-          />
-        </ToggleButton>
-        <NavWrapper open={isOpen}>
+    <>
+      <Wrapper>
+        <BrandWrapper>
+          <Image src="/img/logo.png" alt="Logo" width={32} height={44} />
+          <div>
+            <span>Film by Ben</span>
+            <span>Cinematographer &amp; Film maker</span>
+          </div>
+        </BrandWrapper>
+        <Navigation>
+          <NavBarInfo>
+            <ButtonMagnet href="/quote">Request a Consultation</ButtonMagnet>
+          </NavBarInfo>
+          <ToggleButton onClick={() => setOpen(!isOpen)}>
+            <FontAwesomeIcon
+              icon={["fas", isOpen ? "times" : "bars"]}
+              size={"lg"}
+            />
+          </ToggleButton>
+        </Navigation>
+      </Wrapper>
+      <NavigationOverlay style={{ y }}>
+        <NavWrapper>
           <NavContent>
             <NavInfo>
               <h4
@@ -265,78 +280,9 @@ const Navbar = () => {
             <NavLinks></NavLinks>
           </NavContent>
         </NavWrapper>
-      </Navigation>
-    </Wrapper>
+      </NavigationOverlay>
+    </>
   );
-
-  /* return (
-    <div className={styles.navbar}>
-      <Link href="/">
-        <a className={styles.brand}>
-          <Image
-            src="/img/logo.png"
-            alt="Picture of the author" // TODO: properly set alt text
-            width={32}
-            height={44}
-          />
-          <div className={styles.logoinfo}>
-            <div className={styles.title}>Film by Ben</div>
-            <div className={styles.subtitle}>
-              Cinematographer &amp; Film Maker
-            </div>
-          </div>
-        </a>
-      </Link>
-      <div className={styles.navigation}>
-        <ButtonMagnet href="/quote">Request a Consultation</ButtonMagnet>
-        <div className={styles.menuIcon} onClick={() => setOpen(!isOpen)}>
-          <FontAwesomeIcon icon={["fas", isOpen ? "times" : "bars"]} />
-        </div>
-      </div>
-      <div style={contentProps} className={styles.navigationOverlay}>
-        <div className={styles.navWrapper}>
-          <div className={styles.navContent}>
-            <div className={styles.navInfo}>
-              <h4>Film by Ben</h4>
-              <div className={styles.navInfoText}>
-                Professional Cinematographer and Film Maker <br />
-                based in Las Vegas, Nevada
-              </div>
-              <a href="mailto:ben@filmbyben.com" className={styles.navInfoLink}>
-                ben@filmbyben.com
-              </a>
-              <a href="tel:+1(770)713-2223" className={styles.navInfoLink}>
-                +1 (770) 713-2223
-              </a>
-              <div className={styles.navFollowText}>Follow me</div>
-              <div className={styles.navSocial}>
-                {socialLinks.map(([icon, href], index) => (
-                  <a
-                    key={index}
-                    href={href}
-                    rel="noreferrer"
-                    target="_blank"
-                    className={[styles.socialButton, styles[icon]].join(" ")}
-                  >
-                    <FontAwesomeIcon icon={["fab", icon]} />
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div className={styles.navLinks}>
-              {pages.map(([title, href], index) => (
-                <div key={index} className={styles.navLinkWrapper}>
-                  <Link href={href}>
-                    <a className={[styles.navLink].join(" ")}>{title}</a>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  ); */
 };
 
 export default Navbar;

@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { animated, useSpring, easings } from "react-spring";
 import styled from "styled-components";
 
+import Image from "next/image";
+
 import BackgroundVideo from "@/components/BackgroundVideo";
 import Layout from "@/components/Layout";
 import SocialLinks from "@/components/SocialLinks";
@@ -12,13 +14,11 @@ import SocialLinks from "@/components/SocialLinks";
 import type { NextPageWithLayout } from "@/types";
 import type { ReactElement } from "react";
 
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 // import Carousel from "@/components/Carousel";
 
 // import SimpleCarousel from "@/components/SimpleCarousel";
 
-// <FontAwesomeIcon icon={["fab", "github"]} />
+import logoFull from "@/public/img/logo-full.png";
 
 export interface FollowProps {
   hovered?: boolean;
@@ -104,8 +104,8 @@ const Follower = () => {
       onMouseLeave={() => setHovered(false)}
     >
       <FollowButton>
-        <FollowIconWrapper style={{ width }} /* hovered={hovered} */>
-          <FollowIcon style={{ scaleX, scaleY }} /* hovered={hovered} */>
+        <FollowIconWrapper style={{ width }}>
+          <FollowIcon style={{ scaleX, scaleY }}>
             <FontAwesomeIcon icon={faPlus} />
           </FollowIcon>
         </FollowIconWrapper>
@@ -124,29 +124,29 @@ const Follower = () => {
   );
 };
 
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+`;
+
 const Home: NextPageWithLayout = () => (
   <>
     <Follower />
     {<BackgroundVideo src={"/videos/bg/1.webm"} hero />}
-    <div
-      style={{
-        width: "60vw",
-        margin: "auto",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-      }}
-    >
-      {/* <Image
+    <LogoWrapper>
+      <div style={{ width: "40%" }}>
+        <Image
           src={logoFull}
           alt="Picture of the author"
           layout="responsive"
-          sizes="60vw"
+          sizes="40vw"
           priority
-        /> */}
-    </div>
+        />
+      </div>
+    </LogoWrapper>
     {/* <SimpleCarousel>
         <BackgroundVideo hero
           src={["/videos/bg/1.mp4", "/videos/bg/1.webm"]}
