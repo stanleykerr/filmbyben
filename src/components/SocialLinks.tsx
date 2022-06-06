@@ -1,57 +1,71 @@
-import { useEffect, useMemo } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MagnetMouse from "magnet-mouse";
+import styled from "styled-components";
 
-import SocialButton from "@components/SocialButton";
-import { socialLinks, SocialMedia } from "@shared/constants";
+import useMagnetic from "@/components/useMagnetic";
+import { socialLinks, SocialMedia } from "@/shared/constants";
 
-export interface Props {
-  magnetic?: boolean;
+interface SocialButtonProps {
+  $size?: number;
+  $flavor?: SocialMedia;
 }
 
-const SocialLinks = ({ magnetic }: Props) => {
-  const socialBtns = useMemo(
-    () =>
-      Object.entries(socialLinks).map((e, index) => {
-        const name = e[0] as SocialMedia;
-        const url = e[1];
+const SocialButton = styled.a.attrs<SocialButtonProps>((props) => ({
+  $size: props.$size ?? 40,
+}))<SocialButtonProps>`
+  display: flex;
+  width: ${(props) => props.$size}px;
+  height: ${(props) => props.$size}px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition-property: transform, background-color, border-color;
+  transition-duration: 50ms, 250ms, 250ms;
+  transition-timing-function: ease, ease, cubic-bezier(0.165, 0.84, 0.44, 1);
+  color: white;
+  margin: 0 5px;
 
-        return (
-          <SocialButton
-            key={index}
-            $flavor={name}
-            $size={40}
-            href={url}
-            rel="noreferrer"
-            target="_blank"
-            className={magnetic ? "social-button" : ""}
-          >
-            <FontAwesomeIcon icon={["fab", name]} size={"lg"} />
-          </SocialButton>
-        );
-      }),
-    [magnetic]
+  &:hover {
+    background-color: ${(props) =>
+      props.$flavor && props.theme.colors.socials[props.$flavor]};
+  }
+`;
+
+const SocialButtonN = ({
+  name,
+  url,
+  size = 40,
+}: {
+  name: SocialMedia;
+  url: string;
+  size?: number;
+}) => {
+  const magnetHandlers = useMagnetic();
+
+  return (
+    <SocialButton
+      $flavor={name}
+      $size={size}
+      href={url}
+      rel="noreferrer"
+      target="_blank"
+      {...magnetHandlers}
+    >
+      <FontAwesomeIcon icon={["fab", name]} size={"lg"} />
+    </SocialButton>
   );
+};
 
-  useEffect(() => {
-    if (!magnetic) return;
+interface Props {
+  size?: number;
+}
 
-    let mm = new MagnetMouse({
-      magnet: {
-        element: ".social-button",
-        enabled: true,
-        distance: 0,
-      },
-    });
-    mm.init();
+const SocialLinks = ({ size }: Props) => {
+  const socialBtns = Object.entries(socialLinks).map((e, index) => {
+    const name = e[0] as SocialMedia;
+    const url = e[1];
 
-    window.dispatchEvent(new Event("resize"));
-
-    return () => {
-      mm.destroy();
-    };
-  }, [magnetic]);
+    return <SocialButtonN key={index} name={name} url={url} size={size} />;
+  });
 
   return <>{socialBtns}</>;
 };

@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { Work, sequelize } from "@lib/sequelize";
-
 import { nanoid } from "nanoid";
+
+import { Work, sequelize } from "@/lib/sequelize";
 
 const defaultz = [
   ["The Wedding of Mariah and Jamie Baker", "https://youtu.be/uILHfVBHA_M"],

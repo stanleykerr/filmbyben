@@ -1,15 +1,15 @@
+import Head from "next/head";
+
 import { Card, Grid, Spacer } from "@geist-ui/core";
+import { Description } from "@geist-ui/core";
+import { Work } from "@/lib/sequelize";
+import styled from "styled-components";
 import { deserialize, serialize } from "superjson";
 
-import CmsLayout from "@components/cms/CmsLayout";
-import CmsWork from "@components/cms/CmsWork";
-import { Description } from "@geist-ui/core";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { Work } from "@lib/sequelize";
-import styled from "styled-components";
-import styles from "@styles/CMS.module.scss";
+import CmsLayout from "@/components/cms/CmsLayout";
+import CmsWork from "@/components/cms/CmsWork";
+
+import styles from "@/styles/CMS.module.scss";
 
 // import { Card as LegacyCard } from "@nextui-org/react";
 

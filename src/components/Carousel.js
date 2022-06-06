@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 
-import styles from "@styles/Carousel.module.scss";
+import styles from "@/styles/Carousel.module.scss";
 
 // import PropTypes from "prop-types";
 

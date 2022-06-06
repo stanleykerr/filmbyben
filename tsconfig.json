@@ -2,12 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@middleware/*": ["middleware/*"],
-      "@styles/*": ["styles/*"],
-      "@shared/*": ["shared/*"],
-      "@lib/*": ["lib/*"],
-      "@public/*": ["../public/*"]
+      "@/components/*": ["components/*"],
+      "@/middleware/*": ["middleware/*"],
+      "@/styles/*": ["styles/*"],
+      "@/shared/*": ["shared/*"],
+      "@/lib/*": ["lib/*"],
+      "@/public/*": ["../public/*"],
+      "@/types": ["types/"],
+      "@/types/*": ["types/*"]
     },
     "target": "es2022",
     "lib": ["dom", "dom.iterable", "esnext"],

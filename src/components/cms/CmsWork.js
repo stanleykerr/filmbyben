@@ -14,12 +14,12 @@ import {
 import { DateTime, Duration } from "luxon";
 import { File, Youtube } from "@geist-ui/icons";
 import { Form, Formik } from "formik";
-import { Work, convert } from "@lib/db/models";
+import { Work, convert } from "@/lib/db/models";
 
 import styled from "styled-components";
 import { useState } from "react";
 
-// import styles from "@styles/CMS.module.scss";
+// import styles from "@/styles/CMS.module.scss";
 
 // import { Card } from "@nextui-org/react";
 

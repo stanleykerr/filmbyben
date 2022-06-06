@@ -1,15 +1,6 @@
-import "@styles/globals.scss";
-import "@lib/font-awesome";
+import { Themes } from "@geist-ui/core";
 
-import { CssBaseline, GeistProvider, Themes } from "@geist-ui/core";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-
-// import CursorContextProvider from "@components/CursorContext/CursorContextProvider";
-
-// TODO: use default Layout as fallback
-// import Layout from "@components/layout";
-
-// TODO: actually implement this stuff correctly *facepalm* this is terribly frankenstein'd
+// IMPROVE: implement these properly
 export const defaultBreakpoints = {
   xs: {
     min: "0",
@@ -33,13 +24,17 @@ export const defaultBreakpoints = {
   },
 };
 
-const GlobalStyle = createGlobalStyle`
-  
-`;
-
-const theme = {
+export const theme = {
   colors: {
     primary: "#0070f3",
+    socials: {
+      twitter: "#2aa3f0",
+      facebook: "#3b5998",
+      instagram: "#f83f5a",
+      vimeo: "#1ab7ea",
+      youtube: "#fc0d1c",
+      linkedin: "#2b66bc",
+    },
   },
   palette: {
     accents_1: "#fafafa",
@@ -98,37 +93,11 @@ const theme = {
   },
 };
 
-const themeType = "myTheme";
-const customUnitTheme = Themes.createFromLight({
+export const themeType = "myTheme";
+
+export const customUnitTheme = Themes.createFromDark({
   type: themeType,
   layout: {
     unit: "16px",
   },
 });
-
-// TODO: implement theme type..?
-function MyApp({ Component, pageProps }) {
-  // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout || ((page) => page);
-
-  // TODO: implement this? if we want to
-  /* const [themeType, setThemeType] = useState("light");
-
-  const switchThemes = () => {
-    setThemeType((last) => (last === "dark" ? "light" : "dark"));
-  }; */
-
-  return (
-    <>
-      <GeistProvider themes={[customUnitTheme]} themeType={themeType}>
-        <CssBaseline />
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>
-          {getLayout(<Component {...pageProps} />)}
-        </ThemeProvider>
-      </GeistProvider>
-    </>
-  );
-}
-
-export default MyApp;

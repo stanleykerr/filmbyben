@@ -43,28 +43,30 @@
         "pathGroups": [
           {
             "pattern": "react",
-            "group": "builtin"
+            "group": "external",
+            "position": "before"
           },
           {
             "pattern": "next/**",
-            "group": "builtin",
+            "group": "external",
+            "position": "after",
             "patternOptions": {
               "matchBase": false,
               "partial": true
             }
           },
           {
-            "pattern": "@public/**",
+            "pattern": "@/public/**",
             "group": "type",
             "position": "after"
           },
           {
-            "pattern": "@styles/**",
+            "pattern": "@/styles/**",
             "group": "type",
             "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["type"],
+        "pathGroupsExcludedImportTypes": ["react", "type"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",

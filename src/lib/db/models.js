@@ -3,7 +3,7 @@ import { Input, Link, Switch, Text } from "@geist-ui/core";
 import { DateTime } from "luxon";
 import { Dot } from "@geist-ui/core";
 import Image from "next/image";
-import styles from "@styles/CmsForm.module.scss";
+import styles from "@/styles/CmsForm.module.scss";
 import { useField } from "formik";
 
 var DEV_ENV = false; //(process.env.NODE_ENV || "development") === "development";

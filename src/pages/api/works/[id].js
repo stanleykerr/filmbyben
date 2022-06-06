@@ -1,5 +1,3 @@
-import { Work } from "@lib/sequelize";
-
 export default function handler(req, res) {
   const {
     query: { id },

@@ -1,11 +1,10 @@
-// import "@styles/CmsLayout.module.scss";
+// import "@/styles/CmsLayout.module.scss";
 
-import { Page, Spacer, Tabs } from "@geist-ui/core";
+import { Page } from "@geist-ui/core";
 
-import CmsNavbar from "@components/cms/CmsNavbar";
-import Container from "@components/Container";
+import CmsNavbar from "@/components/cms/CmsNavbar";
 
-// import styles from "@styles/CmsLayout.module.scss";
+// import styles from "@/styles/CmsLayout.module.scss";
 
 export default function CmsLayout({ children }) {
   return (
