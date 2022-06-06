@@ -1,13 +1,14 @@
-import Head from "next/head";
 
 import { Card, Grid, Spacer } from "@geist-ui/core";
 import { Description } from "@geist-ui/core";
-import { Work } from "@/lib/sequelize";
 import styled from "styled-components";
 import { deserialize, serialize } from "superjson";
 
+import Head from "next/head";
+
 import CmsLayout from "@/components/cms/CmsLayout";
 import CmsWork from "@/components/cms/CmsWork";
+import { Work } from "@/lib/sequelize";
 
 import styles from "@/styles/CMS.module.scss";
 

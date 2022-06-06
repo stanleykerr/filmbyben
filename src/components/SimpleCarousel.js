@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { animated, config, useTransition } from "react-spring";
 
 // FIXME: this shit so confusing ngl https://react-spring.io/hooks/use-transition#you-can-transition-arrays
