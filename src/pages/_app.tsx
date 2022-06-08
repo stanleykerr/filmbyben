@@ -8,6 +8,8 @@ import "@/lib/font-awesome";
 
 import type { AppPropsWithLayout } from "@/types";
 
+import "inter-ui/inter.css";
+
 // TODO: implement theme type..?
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   /** Use the layout defined at the page level if available (otherwise defaults to {@link Layout}) */

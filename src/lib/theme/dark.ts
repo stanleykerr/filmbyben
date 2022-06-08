@@ -1,7 +1,8 @@
 import { Themes } from "@geist-ui/core";
+import { GeistUIThemesBreakpoints } from "@geist-ui/core/esm/themes";
 
 // IMPROVE: implement these properly
-export const defaultBreakpoints = {
+export const defaultBreakpoints: GeistUIThemesBreakpoints = {
   xs: {
     min: "0",
     max: "650px",
@@ -77,15 +78,15 @@ export const theme = {
     link: "#0070f3",
   },
   layout: {
-    gap: "16pt",
-    gapNegative: "-16pt",
-    gapHalf: "8pt",
-    gapHalfNegative: "-8pt",
-    gapQuarter: "4pt",
-    gapQuarterNegative: "-4pt",
-    pageMargin: "16pt",
-    pageWidth: "750pt",
-    pageWidthWithMargin: "782pt",
+    gap: "24px",
+    gapNegative: "-24px",
+    gapHalf: "12px",
+    gapHalfNegative: "-12pt",
+    gapQuarter: "6pt",
+    gapQuarterNegative: "-6pt",
+    pageMargin: "24px",
+    pageWidth: "1000pt",
+    pageWidthWithMargin: "1048px",
     breakpointMobile: defaultBreakpoints.xs.max,
     breakpointTablet: defaultBreakpoints.sm.max,
     radius: "5px",
@@ -95,9 +96,10 @@ export const theme = {
 
 export const themeType = "myTheme";
 
-export const customUnitTheme = Themes.createFromDark({
+export const customUnitTheme = Themes.createFromLight({
   type: themeType,
   layout: {
-    unit: "16px",
+    ...theme.layout,
+    // unit: "16px",
   },
 });

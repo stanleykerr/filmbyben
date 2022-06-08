@@ -2,11 +2,14 @@ import styled from "styled-components";
 
 import type { ReactNode } from "react";
 
-export interface Props {
+interface Props {
   children: ReactNode;
   wrapper?: boolean;
   full?: boolean;
 }
+
+declare type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>;
+export declare type ContainerProps = Props & NativeAttrs;
 
 type StyleProps = Omit<Props, "children">;
 
@@ -67,7 +70,7 @@ const InnerContainer = styled.div`
  *
  * @category Component
  */
-const Container = ({ children, ...rest }: Props) => (
+const Container = ({ children, ...rest }: ContainerProps) => (
   <Wrapper {...rest}>
     <InnerContainer>{children}</InnerContainer>
   </Wrapper>
