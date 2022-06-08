@@ -17,7 +17,6 @@ import { deserialize, serialize } from "superjson";
 import Head from "next/head";
 
 import CmsLayout from "@/components/cms/CmsLayout";
-import CmsWork from "@/components/cms/CmsWork";
 import { Work } from "@/lib/db";
 
 import type { NextPageWithLayout } from "@/types";
@@ -208,9 +207,7 @@ const CMS: NextPageWithLayout<PageProps> = ({
 export const getServerSideProps: GetServerSideProps<
   PageProps,
   PageParams
-> = async ({
-  req,
-}: GetServerSidePropsContext<PageParams>): Promise<
+> = async ({}: GetServerSidePropsContext<PageParams>): Promise<
   GetServerSidePropsResult<PageProps>
 > => {
   /* const handler = nextConnect();

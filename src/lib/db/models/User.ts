@@ -16,7 +16,6 @@ import {
   InferAttributes,
   InferCreationAttributes,
   Model,
-  NonAttribute,
 } from "@sequelize/core";
 import { nanoid } from "nanoid";
 
@@ -40,7 +39,7 @@ export class User extends Model<
   declare salt: CreationOptional<Buffer>;
   declare hashedPassword: CreationOptional<Buffer>;
 
-  declare password?: NonAttribute<string>;
+  declare password?: string | null;
 
   // timestamps
   declare createdAt: CreationOptional<Date>; // createdAt can be undefined during creation

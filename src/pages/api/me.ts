@@ -32,8 +32,8 @@ handler
     }
   })
   .post(async (req, res) => {
-    const { username, password, name } = req.body;
     // TODO: implement user creation
+    const { username: _username, password: _password, name: _name } = req.body;
     // await User.create({ username, password, name });
     res.status(200).json({ success: true, message: "created new user" });
   })
