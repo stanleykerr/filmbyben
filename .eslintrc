@@ -74,7 +74,14 @@
         }
       }
     ],
-    "quotes": [2, "double"],
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
     "semi": "off",
     "@typescript-eslint/semi": ["error"], // ["off"]
     "@typescript-eslint/member-delimiter-style": [
