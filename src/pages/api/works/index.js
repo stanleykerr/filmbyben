@@ -1,4 +1,5 @@
-import { Work } from "@/lib/sequelize";
+import { Work } from "@/lib/db";
+
 export default async function handler(req, res) {
   const { method } = req;
 

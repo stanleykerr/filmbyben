@@ -23,3 +23,15 @@ export const pages = [
   ["About", "/about"],
   ["Contact", "/contact"],
 ];
+
+export const cmsPages = [
+  ["Overview", "/cms"],
+  ["Integrations", "/cms/sub"],
+  ["Showcase", "/showcase"],
+  ["Services", "/services"],
+  ["About", "/about"],
+  ["Contact", "/contact"],
+  ["Settings", "/settings"],
+];
+
+export const PEPPER = process.env.PEPPER;
