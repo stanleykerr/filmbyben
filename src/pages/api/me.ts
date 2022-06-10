@@ -1,9 +1,7 @@
 import nextConnect from "next-connect";
 
 import { User } from "@/lib/db";
-
-// import { deleteUser, updateUserByUsername } from "../../lib/db";
-import auth from "../../middleware/auth";
+import auth from "@/middleware/auth";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
