@@ -1,5 +1,3 @@
-// import "@/styles/CmsLayout.module.scss";
-
 import { ReactNode } from "react";
 
 import { Page, Spacer } from "@geist-ui/core";
