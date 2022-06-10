@@ -1,9 +1,11 @@
 import CmsLayout from "@/components/cms/CmsLayout";
 
-export default function Sub() {
-  return <>test</>;
-}
+import type { NextPageWithLayout } from "@/types";
 
-// TODO: fix
-// eslint-disable-next-line react/display-name
+const Sub: NextPageWithLayout = () => {
+  return <>test</>;
+};
+
 Sub.getLayout = (page) => <CmsLayout>{page}</CmsLayout>;
+
+export default Sub;
