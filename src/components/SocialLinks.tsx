@@ -22,7 +22,7 @@ const SocialButton = styled.a.attrs<SocialButtonProps>((props) => ({
   transition-duration: 50ms, 250ms, 250ms;
   transition-timing-function: ease, ease, cubic-bezier(0.165, 0.84, 0.44, 1);
   color: white;
-  margin: 0 5px;
+  margin: 0 2.5px;
 
   &:hover {
     background-color: ${(props) =>
@@ -50,7 +50,7 @@ const SocialButtonN = ({
       target="_blank"
       {...magnetHandlers}
     >
-      <FontAwesomeIcon icon={["fab", name]} size={"lg"} />
+      <FontAwesomeIcon icon={["fab", name]} size={size >= 40 ? "lg" : "1x"} />
     </SocialButton>
   );
 };
