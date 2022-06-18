@@ -12,10 +12,7 @@ export default async function handler(
   const { token } = JSON.parse(req.body);
 
   try {
-    const session = await getLoginSession(
-      token,
-      process.env.TOKEN_SECRET as string
-    );
+    const session = await getLoginSession(token, process.env.TOKEN_SECRET);
 
     res.status(200).json({ session });
   } catch (e) {

@@ -25,6 +25,7 @@ import type { Role } from "./Role";
 
 /**
  * TODO: use pepper with generated salt when hashing passwords
+ * TODO: use scrypt (or such) to hash passwords
  * import { PEPPER } from "@/shared/constants";
  */
 export class User extends Model<

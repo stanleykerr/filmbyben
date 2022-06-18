@@ -5,6 +5,7 @@ import { animated, useSpring, easings } from "react-spring";
 import styled from "styled-components";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import ButtonMagnet from "./ButtonMagnet";
 import SocialLinks from "./SocialLinks";
@@ -228,13 +229,15 @@ const Navbar = () => {
   return (
     <>
       <Wrapper>
-        <BrandWrapper>
-          <Image src="/img/logo.png" alt="Logo" width={32} height={44} />
-          <div>
-            <span>Film by Ben</span>
-            <span>Cinematographer &amp; Film maker</span>
-          </div>
-        </BrandWrapper>
+        <Link href="/" passHref>
+          <BrandWrapper>
+            <Image src="/img/logo.png" alt="Logo" width={32} height={44} />
+            <div>
+              <span>Film by Ben</span>
+              <span>Cinematographer &amp; Film maker</span>
+            </div>
+          </BrandWrapper>
+        </Link>
         <Navigation>
           <NavBarInfo>
             <ButtonMagnet href="/quote">Request a Consultation</ButtonMagnet>
