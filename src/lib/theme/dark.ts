@@ -35,6 +35,7 @@ export const theme = {
       vimeo: "#1ab7ea",
       youtube: "#fc0d1c",
       linkedin: "#2b66bc",
+      tiktok: "#fb2c54",
     },
   },
   palette: {
