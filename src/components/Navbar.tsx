@@ -7,6 +7,12 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_PRETTY,
+} from "@/shared/constants";
+
 import ButtonMagnet from "./ButtonMagnet";
 import SocialLinks from "./SocialLinks";
 
@@ -23,6 +29,9 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: transparent;
   color: white;
+
+  background-color: rgba(22, 23, 25, 0.8);
+  height: 88px;
 `;
 
 const BrandWrapper = styled.a`
@@ -269,11 +278,11 @@ const Navbar = () => {
                 Professional Cinematographer and Film Maker based in Las Vegas,
                 Nevada
               </NavInfoText>
-              <NavInfoLink href="mailto:ben@filmbyben.com">
-                ben@filmbyben.com
+              <NavInfoLink href={`mailto:${CONTACT_EMAIL}`}>
+                {CONTACT_EMAIL}
               </NavInfoLink>
-              <NavInfoLink href="tel:+1-770-713-2223">
-                +1 (770) 713-2223
+              <NavInfoLink href={`tel:${CONTACT_PHONE}`}>
+                {CONTACT_PHONE_PRETTY}
               </NavInfoLink>
               <NavFollowText>Follow me</NavFollowText>
               <NavSocial>

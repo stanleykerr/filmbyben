@@ -35,3 +35,18 @@ export const cmsPages = [
 ];
 
 export const PEPPER = process.env.PEPPER;
+
+export const CONTACT_EMAIL =
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contact@example.com";
+
+export const CONTACT_PHONE = `+${(
+  process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "12345678910"
+)
+  .replace(/\D+/g, "")
+  .padEnd(11, "0")
+  .substring(0, 11)}`;
+
+export const CONTACT_PHONE_PRETTY = CONTACT_PHONE.replace(
+  /(\d{1})(\d{3})(\d{3})(\d{4})/,
+  "$1 ($2) $3-$4"
+);

@@ -6,6 +6,10 @@ export interface IProcessEnv {
   NEXT_PUBLIC_GTM_PREVIEW?: string;
   NEXT_PUBLIC_GTM_AUTH?: string;
 
+  /** Contact Info */
+  NEXT_PUBLIC_CONTACT_EMAIL?: string;
+  NEXT_PUBLIC_CONTACT_PHONE?: string;
+
   /** Database */
   DB_CONNECTION_URL: string;
 
