@@ -9,10 +9,6 @@ import Layout from "@/components/Layout";
 import type { NextPageWithLayout } from "@/types";
 import type { ReactElement } from "react";
 
-// import Carousel from "@/components/Carousel";
-
-// import SimpleCarousel from "@/components/SimpleCarousel";
-
 import logoFull from "@/public/img/logo-full.png";
 
 const LogoWrapper = styled.div`
@@ -38,27 +34,6 @@ const Home: NextPageWithLayout = () => (
         />
       </div>
     </LogoWrapper>
-    {/* <SimpleCarousel>
-        <BackgroundVideo hero
-          src={["/videos/bg/1.mp4", "/videos/bg/1.webm"]}
-        />
-        <BackgroundVideo hero
-          id={1}
-          src={["/videos/bg/2.mp4", "/videos/bg/2.webm"]}
-        />
-      </SimpleCarousel> */}
-    {/* <Carousel defaultSlide={0}>
-        <Carousel.Slide>
-          <BackgroundVideo hero
-            src={["/videos/bg/1.mp4", "/videos/bg/1.webm"]}
-          />
-        </Carousel.Slide>
-        <Carousel.Slide>
-          <BackgroundVideo hero
-            src={["/videos/bg/2.mp4", "/videos/bg/2.webm"]}
-          />
-        </Carousel.Slide>
-      </Carousel> */}
   </>
 );
 

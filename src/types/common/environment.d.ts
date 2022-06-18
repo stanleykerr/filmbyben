@@ -12,6 +12,10 @@ export interface IProcessEnv {
   /** Authentication */
   TOKEN_SECRET: string;
   PEPPER: string;
+
+  /** Facebook/Instagram API */
+  FB_ACCESS_TOKEN: string;
+  INSTAGRAM_ID: string;
 }
 
 declare global {

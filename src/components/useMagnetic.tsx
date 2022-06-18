@@ -4,13 +4,12 @@ import { isMobile } from "react-device-detect";
 
 import type { MouseEvent } from "react";
 
-interface Options {
-  amount?: number;
+interface BaseOptions {
   onMouseMove?: (event: MouseEvent<HTMLElement>) => void;
   onMouseLeave?: (event: MouseEvent<HTMLElement>) => void;
 }
 
-const useMagnetic = (options: Options = {}) => {
+export const useMagneticBase = (options: BaseOptions = {}) => {
   const [offset, setOffset] = useState({
     x: 0,
     y: 0,
@@ -44,10 +43,26 @@ const useMagnetic = (options: Options = {}) => {
     [options, setOffset]
   );
 
+  return isMobile
+    ? { ...options, offset: { x: 0, y: 0 } }
+    : {
+        onMouseMove,
+        onMouseLeave,
+        offset,
+      };
+};
+
+type Options = BaseOptions & {
+  amount?: number;
+};
+
+const useMagnetic = (options: Options = {}) => {
+  const { onMouseMove, onMouseLeave, offset } = useMagneticBase();
+
   const amount = options.amount ?? 8;
 
   return isMobile
-    ? { options, style: {} }
+    ? { ...options, style: {} }
     : {
         onMouseMove,
         onMouseLeave,
