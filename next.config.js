@@ -4,8 +4,23 @@
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["jsx", "js", "ts", "tsx"],
-  images: {
-    domains: ["uploads-ssl.webflow.com", "img.youtube.com"],
+  experimental: {
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "uploads-ssl.webflow.com",
+        },
+        {
+          protocol: "https",
+          hostname: "img.youtube.com",
+        },
+        {
+          protocol: "https",
+          hostname: "**.cdninstagram.com",
+        },
+      ],
+    },
   },
   compiler: {
     styledComponents: true,

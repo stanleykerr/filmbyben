@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { animated, useSpring, easings } from "react-spring";
@@ -30,8 +30,8 @@ const Wrapper = styled.div`
   background-color: transparent;
   color: white;
 
-  background-color: rgba(22, 23, 25, 0.8);
-  height: 88px;
+  transition: all 200ms ease-in-out;
+  transition-property: height, background;
 `;
 
 const BrandWrapper = styled.a`
@@ -209,7 +209,7 @@ const NavSocial = styled.div`
 
 const NavigationOverlay = styled(animated.div)`
   z-index: 10;
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   display: flex;
   top: 0;
@@ -221,6 +221,20 @@ const NavigationOverlay = styled(animated.div)`
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   /*
   transform: ${({ open }) => `translateY(${open ? 0 : -100}%)`};
@@ -237,7 +251,14 @@ const Navbar = () => {
 
   return (
     <>
-      <Wrapper>
+      <Wrapper
+        style={{
+          background: `rgba(22, 23, 25, ${
+            Math.min(scrollPosition / 112, 1.0) * 0.8
+          })`,
+          height: 112 - Math.min(scrollPosition / 112, 1.0) * 24, // 112 and 88
+        }}
+      >
         <Link href="/" passHref>
           <BrandWrapper>
             <Image src="/img/logo.png" alt="Logo" width={32} height={44} />

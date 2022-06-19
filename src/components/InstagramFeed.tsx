@@ -5,6 +5,8 @@ import { animated, useSpring } from "react-spring";
 import styled from "styled-components";
 import useSWR from "swr";
 
+import Image from "next/image";
+
 import { useMagneticBase } from "@/components/useMagnetic";
 
 import type { InstagramMedia } from "../types";
@@ -65,7 +67,7 @@ const InstagramOverlay = styled.div`
   line-height: 1;
 `;
 
-const InstagramPhoto = styled(animated.img)`
+const InstagramPhotoWrapper = styled(animated.div)`
   position: absolute;
   z-index: 1;
   display: block;
@@ -115,21 +117,31 @@ const InstagramPost = ({ post }: { post: InstagramMedia }) => {
           <FontAwesomeIcon icon={["fab", "instagram"]} size={"2x"} />
         </InstagramOverlay>
       </InstagramOverlayWrapper>
-      <InstagramPhoto
-        src={post.thumbnail_url}
+      <InstagramPhotoWrapper
         style={{
           transition: "transform 50ms ease",
           transform: `translate(${offset.x * -2}%, ${offset.y * -2}%)`,
           scaleX,
           scaleY,
         }}
-      />
+      >
+        <Image
+          src={post.thumbnail_url}
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+        />
+      </InstagramPhotoWrapper>
     </InstagramPostWrapper>
   );
 };
 
 const InstagramFeed = () => {
-  const { data, error } = useSWR("/api/instagram", fetcher);
+  const { data, error } = useSWR("/api/instagram", fetcher, {
+    revalidateOnFocus: false,
+    revalidateIfStale: false,
+  });
 
   if (error || !data) return null;
 

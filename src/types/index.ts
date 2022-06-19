@@ -17,5 +17,7 @@ export interface RawInstagramMedia {
 
 export type InstagramMedia = Omit<
   RawInstagramMedia,
-  "media_type" | "media_url"
->;
+  "media_type" | "media_url" | "thumbnail_url"
+> & {
+  thumbnail_url: string;
+};

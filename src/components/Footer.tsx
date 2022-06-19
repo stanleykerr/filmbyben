@@ -53,6 +53,7 @@ const ContactHeading = styled.h4`
   font-size: 21px;
   line-height: 28px;
   font-weight: 500;
+  color: var(--swatch_46f8859a);
 `;
 
 const ContactEmail = styled.a`
